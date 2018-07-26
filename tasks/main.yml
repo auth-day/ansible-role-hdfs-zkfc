@@ -1,0 +1,8 @@
+- name: put systemd unit file
+  template: src=hdfs-zkfc.service.j2 dest=/etc/systemd/system/hdfs-zkfc.service
+
+- name: reload systemd
+  shell: systemctl daemon-reload
+
+- name: start service
+  service: name=hdfs-zkfc.service state=restarted enabled=yes
